@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Задание по Python</h1>
+
+                <p>
+                    Привет, username!
+                </p>
+
+                <p>
+                    Если ты попал на эту страницу значит ты хочешь завершить курс "Програмирование на Python".
+                </p>
+
+                <p>
+                    Для этого тебе необходимо выполнить задание, описанное ниже. </p>
+
+                <h2>
+                    Финальное тестовое задание
+                </h2>
+
+                <p>
+                    Тебе необходимо будет создать <strong>100 различных</strong> пользователей и занести их в базу
+                    данных на этом сайте. Как это сделать?</p>
+
+                <p>
+                    <strong>Шаг №1</strong>: для начала ты должен получить код разработчика, по которому я смогу понять
+                    что это
+                    именно
+                    ты создал пользователей в базе данных. Это можно сделать перейдя по сслыке
+                    <a target="_blank" href="/api/developer/create">/api/developer/create </a>
+                    там при помощи <a target="_blank" href="http://ru.wikipedia.org/wiki/HTTP#GET">GET</a> параметра
+                    указать свой <i>nickname</i>. Таким образом, ты создаешь аккаунт разработчика, которому будет выдан
+                    код.
+                </p>
+
+                <p>
+                    <strong>Пример</strong>:<br/> Запрос вида
+                    <a href="/api/developer/create?username=test_{% now 'omjHi' %}">
+                        /api/developer/create?username=test_{% now 'omjHi' %}
+                    </a>
+                    выдаст результат:
+                </p>
+
+                <p>
+                    <code>
+                        {"username": "test_{% now 'omjHi' %}", "code": "4dd6685cf1c5468e"}
+                    </code>
+                </p>
+
+                <p>
+                    <i>Бонусом</i> будет если ты сделаешь это из кода своей программы!
+                </p>
+
+                <p>
+                    <strong>Шаг №2</strong>: теперь необходимо написать программу, которая будет создавать пользователей
+                    и записывать их в мою базу данных, с помощью вызова метода user/create.
+                </p>
+
+                <p>
+                    <strong>Пример</strong>:<br/> Запрос вида
+                    <a href="http://localhost:8000/api/user/create?code=4dd6685cf1c5468e&username=test12354&first_name=Danil&second_name=Ivanov&password=jmrnter3">
+                        /api/user/create?code=<strong>4dd6685cf1c5468e</strong>&username=d_ivanof&first_name=Danil&second_name=Ivanov&password=jmrnter3
+                    </a>
+                    выдаст результат:
+                </p>
+
+                <p>
+                    <code>{ <br/>
+                        "username": "d_ivanof", <br/>
+                        "pk": 1, <br/>
+                        "first_name": "Danil", <br/>
+                        "success": false,<br/>
+                        "count": 5,<br/>
+                        "created_at": "2014.06.2917:21:02" <br/>
+                        }</code>, где:
+                </p>
+
+                <p>
+                    <i>code</i> - код разработчика, полученный ранее;<br/>
+                    <i>password</i> - сгенерированный пароль или его хеш;<br/>
+                    <i>username</i> - имя пользователя (латинскими буквами);<br/>
+                    <i>first_name, second_name</i> - Имя и Фамилия пользователя;<br/>
+                    <i>count</i> - количество, созданных тобой пользователей;<br/>
+                    <i>success</i> - флаг, создано ли необходимое количество пользователей.
+                </p>
+
+                <p>
+                    <strong>Шаг №3 - последний: </strong> как только флаг success станет равен <i>true</i>, так ты
+                    можешь считать что почти сдал тестовое задание!
+                    Осталось только показать, написанный код. Успехов!
+                </p>
+
+                <p>
+                    По всем вопрос со мной можно связаться по скайпу <a href="skype:nonamenix">nonamenix</a> и по почте
+                    <i>d_ivanof at wargaming dot net</i>.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
